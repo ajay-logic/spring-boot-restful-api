@@ -1,20 +1,36 @@
 package com.example.Job_Application_System.model;
 
 import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Null;
+
 
 @Entity
+
+@Getter
+@Setter
 public class JobApply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Null
+    @NotBlank
     private String candidateName;
+
+    @Email
     private String emailId;
+
     private int yearOfExperience;
+
+    @NotBlank
     private String jobRole;
 
     public JobApply(String candidateName, String emailId, int yearOfExperience, String jobRole) {
@@ -27,43 +43,4 @@ public class JobApply {
     public JobApply() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCandidateName() {
-        return candidateName;
-    }
-
-    public void setCandidateName(String candidateName) {
-        this.candidateName = candidateName;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-    public int getYearOfExperience() {
-        return yearOfExperience;
-    }
-
-    public void setYearOfExperience(int yearOfExperience) {
-        this.yearOfExperience = yearOfExperience;
-    }
-
-    public String getJobRole() {
-        return jobRole;
-    }
-
-    public void setJobRole(String jobRole) {
-        this.jobRole = jobRole;
-    }
 }

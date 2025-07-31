@@ -6,6 +6,9 @@ import com.example.Job_Application_System.repository.ApplicationRepo;
 import com.example.Job_Application_System.repository.JobRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.core.support.PersistenceExceptionTranslationRepositoryProxyPostProcessor;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +46,10 @@ public class JobService {
     public List<JobApply> getAllAppllication() {
 
         return applicationRepo.findAll();
+    }
+    public Page<JobApply> getAllAplicationsByPage(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return applicationRepo.findAll(pageable);
     }
     public List <JobApply> filterApplication(String jobRole) {
 

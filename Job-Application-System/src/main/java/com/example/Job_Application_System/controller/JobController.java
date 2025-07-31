@@ -4,6 +4,7 @@ import com.example.Job_Application_System.model.JobApply;
 import com.example.Job_Application_System.model.Jobs;
 import com.example.Job_Application_System.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,12 @@ public class JobController {
     @GetMapping("/admin/applications") //view all applications
     public List<JobApply> getAllApplication(){
         return jobService.getAllAppllication();
+    }
+    @GetMapping("/admin/applications/page")
+    public Page<JobApply> getAllApplicationsByPage(@RequestParam int page,
+                                                   @RequestParam int size) {
+        return jobService.getAllAplicationsByPage(page,size);
+
     }
 
     @GetMapping("/admin/applications/filter/{jobRole}") // view specific application by role
