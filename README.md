@@ -22,6 +22,9 @@ testing for Postman and documented with Swagger UI for easy interaction.
 - can post job openings
 - can reject submited application.
 
+# Access contorl
+I only implemented URL-bassed acesss control, without authentication or security features.
+
 # Setup
 1.**Clone the Repository** 
 cmd: git clone https://github.com/ajay-logic/spring-boot-restful-api.git
